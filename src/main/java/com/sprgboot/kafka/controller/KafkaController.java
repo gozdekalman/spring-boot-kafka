@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class KafkaController {
-    @Autowired
     private KafkaProducer producer;
+
+    public KafkaController(KafkaProducer producer) {
+        this.producer = producer;
+    }
 
     @GetMapping("/send")
     public String sendMsg(@RequestParam("msg") String message) {
